@@ -74,9 +74,11 @@ Dentro del directorio `spark-docker`, ejecuta los siguientes comandos:
      --master local[*] data/euclid.py 2>&1 | grep '^gcd'"
    ```
 
-![[Pasted image 20250426015627.png]]
+![Pasted image 20250426015627](https://github.com/user-attachments/assets/16bd195c-f55a-4f97-bf38-12d61dc62165)
 
-![[Pasted image 20250426015638.png]]
+
+![Pasted image 20250426015627](https://github.com/user-attachments/assets/b54a2d85-3ca2-4758-9dc1-0d109ab5a404)
+
 
 # 2. 
 
@@ -87,7 +89,8 @@ docker exec spark-master-custom bash -c "/opt/spark/bin/spark-submit --master lo
    ```
 
 Nota media de todas las votaciones de cada película. 
-![[Pasted image 20250426020803.png]]
+![Pasted image 20250426015627](https://github.com/user-attachments/assets/42f7b74d-43ce-4265-9ec4-83b3eb2dac7a)
+
 
 ## 2.2 Ejecución  average_movie_mark
 
@@ -95,7 +98,8 @@ Nota media de todas las votaciones de cada película.
 docker exec spark-master-custom bash -c "/opt/spark/bin/spark-submit --master local[*] data/average_movie_mark.py 2>/dev/null"
    ```
 Notas medias superiores a 3
-![[Pasted image 20250426021104.png]]
+![Pasted image 20250426015627](https://github.com/user-attachments/assets/4b2cf32b-3c57-4d4e-8dc3-afb1ec1f65dd)
+
 
 # 3.
 
@@ -103,7 +107,8 @@ Notas medias superiores a 3
 docker exec spark-master-custom bash -c '/opt/spark/bin/spark-submit --master local[*] data/mapreduce.py'
 ```
 
-![[Pasted image 20250426023011.png]]
+![Pasted image 20250426015627](https://github.com/user-attachments/assets/d22dfa38-6e94-429c-86f1-34509669015c)
+
 
 # 4.
 
@@ -111,10 +116,12 @@ docker exec spark-master-custom bash -c '/opt/spark/bin/spark-submit --master lo
 docker exec spark-master-custom bash -c "/opt/spark/bin/spark-submit --master local[*] data/movies_rdd.py"
 ```
 
-![[Pasted image 20250426025133.png]]
+![Pasted image 20250426015627](https://github.com/user-attachments/assets/ce440f50-ffb9-4ff6-a470-a4151b5dcfcb)
+
 Muestra muchas películas porque hay pocas o ninguna con menos de 4 letras en el nombre.
 Aquí una prueba cambiando 4 por 10
-![[Pasted image 20250426025448.png]]
+![Pasted image 20250426025448](https://github.com/user-attachments/assets/87b4f4e5-0514-4f31-8dbe-606bf071bf56)
+
 
 # 5.
 ## 5.1
@@ -123,11 +130,13 @@ Aquí una prueba cambiando 4 por 10
 docker exec spark-master-custom bash -c "/opt/spark/bin/spark-submit --master local[*] data/quijote_all_words_list.py"
 ```
 Lista de todas las palabras:
-![[Pasted image 20250426030534.png]]
+![Pasted image 20250426030534](https://github.com/user-attachments/assets/c1b6f260-ffe4-49a5-990d-ec45277b22c1)
+
 
 *Extras*
 Total de palabras + 50 primeras palabras:
-![[Pasted image 20250426030621.png]]
+![Pasted image 20250426030621](https://github.com/user-attachments/assets/e133fdba-30fc-47a9-8669-718d20f315bf)
+
 
 ## 5.2
 
@@ -135,7 +144,8 @@ Total de palabras + 50 primeras palabras:
 docker exec spark-master-custom bash -c "/opt/spark/bin/spark-submit --master local[*] data/quijote_word_count.py dichoso"  #Puedes cambiar la palabra
 ```
 
-![[Pasted image 20250426030958.png]]
+![Pasted image 20250426030958](https://github.com/user-attachments/assets/8e5d7e28-7fcc-4aae-814e-4413e0482250)
+
 
 ## 5.3
 
@@ -194,7 +204,8 @@ docker exec -it hadoop-namenode bash -c "/opt/hadoop/bin/hdfs dfs -ls /quijote_w
 docker exec -it hadoop-namenode bash -c "/opt/hadoop/bin/hdfs dfs -cat /quijote_wordcount/part-* | head"
 ```
 
-![[Pasted image 20250426035026.png]]
+![Pasted image 20250426035026](https://github.com/user-attachments/assets/f29c6d12-1c2c-4713-a375-d02d34dd1433)
+
 
 
 # 6.
@@ -203,7 +214,8 @@ docker exec -it hadoop-namenode bash -c "/opt/hadoop/bin/hdfs dfs -cat /quijote_
 docker exec -it spark-master-custom bash -c "/opt/spark/bin/spark-submit data/numbers_task.py"
 ```
 
-![[Pasted image 20250426035942.png]]
+![Pasted image 20250426035942](https://github.com/user-attachments/assets/a825e6cd-ce24-48aa-8bda-02d81e39b680)
+
 
 # 7. 
 
@@ -211,7 +223,8 @@ docker exec -it spark-master-custom bash -c "/opt/spark/bin/spark-submit data/nu
 docker exec -it spark-master-custom bash -c "/opt/spark/bin/spark-submit data/words_rdd_tasks.py"
 ```
 
-![[Pasted image 20250426040206.png]]
+![Pasted image 20250426040206](https://github.com/user-attachments/assets/25bc1580-a065-4e56-89d6-e5583b305f28)
+
 
 # 8. 
 
@@ -219,20 +232,32 @@ docker exec -it spark-master-custom bash -c "/opt/spark/bin/spark-submit data/wo
 docker exec -it spark-master-custom bash -c "/opt/spark/bin/spark-submit data/names_rdd_tasks.py"
 ```
 
-![[Pasted image 20250426041515.png]]
+![Pasted image 20250426041515](https://github.com/user-attachments/assets/171ec4dd-ed3f-4230-91d3-1191bc70a289)
+
 
 # 9.
 
 ```bash
  docker exec -it spark-master-custom bash -c "/opt/spark/bin/spark-submit data/marks_rdd_tasks.py"
 ```
-![[Pasted image 20250426042348.png]]
-![[Pasted image 20250426042400.png]]
-![[Pasted image 20250426042408.png]]
-![[Pasted image 20250426042419.png]]
-![[Pasted image 20250426042427.png]]
-![[Pasted image 20250426042434.png]]
-![[Pasted image 20250426042442.png]]
-![[Pasted image 20250426042455.png]]
-![[Pasted image 20250426042502.png]]
-![[Pasted image 20250426042508.png]]
+![Pasted image 20250426042348](https://github.com/user-attachments/assets/af7e4543-b1de-4cf5-80b0-027abcdc3589)
+
+![Pasted image 20250426042400](https://github.com/user-attachments/assets/cdbbf8ef-1749-407d-a0ef-ec367f5a3d3d)
+
+![Pasted image 20250426042408](https://github.com/user-attachments/assets/03c0878a-3530-4934-b26f-cb25003862cb)
+
+![Pasted image 20250426042419](https://github.com/user-attachments/assets/5f15e3af-fd0e-4a23-9b71-6c71f316368d)
+
+![Pasted image 20250426042427](https://github.com/user-attachments/assets/f3f29943-fe10-426f-9f6a-4ab81a3bf8e7)
+
+![Pasted image 20250426042434](https://github.com/user-attachments/assets/50c406ea-c54c-4481-b718-08d6d3164ff7)
+
+![Pasted image 20250426042442](https://github.com/user-attachments/assets/da40d151-ac9c-41b4-b2f2-d6f001a7f3da)
+
+![Pasted image 20250426042455](https://github.com/user-attachments/assets/459774e0-3729-4a33-8790-9765c8d084bb)
+
+![Pasted image 20250426042502](https://github.com/user-attachments/assets/066b7828-f300-4d2c-8c53-799ee9952265)
+
+![Pasted image 20250426042508](https://github.com/user-attachments/assets/78fdfac5-d188-48be-af2f-10d591ac6024)
+
+
