@@ -1,0 +1,37 @@
+# Comandos y descripción concisa
+
+# 1. Crear la red Docker
+docker network create spark-network   # Crea una red llamada spark-network para conectar contenedores
+
+# 2. Construir la imagen de Spark
+docker build -t spark-custom:3.3.2 .   # Compila la imagen Docker con Java 17 y Spark 3.3.2
+
+# 3. Iniciar el contenedor maestro
+docker run -d --name spark-master-custom --network spark-network -p 8080:8080 -p 7077:7077 -v "${PWD}:/opt/spark/data" spark-custom:3.3.2 tail -f /dev/null   # Levanta el contenedor Spark Master
+
+# 4. Arrancar Spark Master
+docker exec -d spark-master-custom bash -c "/opt/spark/bin/spark-class org.apache.spark.deploy.master.Master --host 0.0.0.0 --port 7077 --webui-port 8080"   # Inicia el proceso Master dentro del contenedor
+
+# 5. Ejecutar Euclid y filtrar
+docker exec spark-master-custom bash -c "/opt/spark/bin/spark-submit --master local[*] data/euclid.py 2>&1 | grep '^gcd'"   # Ejecuta el script Euclid y muestra solo resultados gcd
+
+# 3.1. Nota media por película
+docker exec spark-master-custom bash -c "/opt/spark/bin/spark-submit --master local[*] data/movies_each_average.py 2>/dev/null"   # Calcula promedio de votos por película
+
+# 3.2. Películas con nota > 3
+docker exec spark-master-custom bash -c "/opt/spark/bin/spark-submit --master local[*] data/average_movie_mark.py 2>/dev/null"   # Filtra películas con promedio > 3
+
+# 4. MapReduce con DataFrames
+docker exec spark-master-custom bash -c "/opt/spark/bin/spark-submit --master local[*] data/mapreduce.py"   # Implementa el ejercicio de MapReduce usando DataFrames
+
+# 5. RDD películas (4+ vocales)
+docker exec spark-master-custom bash -c "/opt/spark/bin/spark-submit --master local[*] data/movies_rdd.py"   # Filtra títulos con al menos 4 vocales usando RDD
+
+# 6.1. Listado de palabras
+docker exec spark-master-custom bash -c "/opt/spark/bin/spark-submit --master local[*] data/quijote_all_words_list.py"   # Lista todas las palabras del texto
+
+# 6.2. Conteo de palabra
+docker exec spark-master-custom bash -c "/opt/spark/bin/spark-submit --master local[*] data/quijote_word_count.py <palabra>"   # Cuenta ocurrencias de la palabra indicada
+
+# 6.3. Guardar en HDFS
+docker exec spark-master-custom bash -c "/opt/spark/bin/spark-submit data/quijote_wordcount_to_hdfs.py"   # Guarda el recuento completo en HDFS
